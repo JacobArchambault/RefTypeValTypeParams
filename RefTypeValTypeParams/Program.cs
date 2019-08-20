@@ -19,6 +19,16 @@ namespace RefTypeValTypeParams
             SendAPersonByValue(fred);
             Console.WriteLine("\nAfter value call, Person is: ");
             fred.Display();
+
+            // Passing ref-types by ref.
+            Console.WriteLine("***** Passing Person object by reference *****");
+            Person mel = new Person("Mel", 23);
+            Console.WriteLine("Before by ref call, Person is:");
+            mel.Display();
+
+            SendAPersonByReference(ref mel);
+            Console.WriteLine("After by ref call, Person is:");
+            mel.Display();
             Console.ReadLine();
         }
 
@@ -29,6 +39,17 @@ namespace RefTypeValTypeParams
 
             // Will the caller see this reassignment?
             p = new Person("Nikki", 99);
+            Console.WriteLine();
+        }
+
+        static void SendAPersonByReference(ref Person p)
+        {
+            // Change some data of "p".
+            p.personAge = 555;
+
+            // "p" is now point to a new object on the heap!
+            p = new Person("Nikki", 999);
+            Console.WriteLine();
         }
     }
 }
