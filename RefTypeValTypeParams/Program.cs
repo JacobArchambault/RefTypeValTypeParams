@@ -10,7 +10,16 @@ namespace RefTypeValTypeParams
     {
         static void Main(string[] args)
         {
+            // Passing ref-types by value
+            Console.WriteLine("***** Passing Person object by value *****");
+            Person fred = new Person("Fred", 12);
+            Console.WriteLine("\nBefore by value call, Person is: ");
+            fred.Display();
 
+            SendAPersonByValue(fred);
+            Console.WriteLine("\nAfter value call, Person is: ");
+            fred.Display();
+            Console.ReadLine();
         }
 
         static void SendAPersonByValue(Person p)
